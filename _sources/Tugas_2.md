@@ -11,3 +11,5 @@ kernelspec:
   language: python
   name: python3
 ---
+
+# PREDIKSI HARGA TEPUNG TERIGU

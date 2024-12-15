@@ -54,3 +54,217 @@ ini membantu mengidentifikasi produk secara unik di antara berbagai pilihan di p
 * ROM: Kapasitas penyimpanan internal (Read-Only Memory) atau storage laptop, yang dapat berupa SSD atau HDD, diukur dalam gigabyte (GB) atau terabyte (TB). Fitur ini memengaruhi kapasitas penyimpanan data pengguna.</p>
 
 ## Import Library
+```{code-cell} python
+# Import library yang dibutuhkan
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+import warnings
+warnings.filterwarnings('ignore')
+```
+
+```{code-cell} python
+df = pd.read_csv('LAPTOP.csv')
+df.head()
+```
+### Menentukan Missing Value
+```{code-cell} python
+df = pd.read_csv('LAPTOP.csv')
+df.isnull().sum()
+```
+<p>dapat dilihat tidak terdapat missingvalue</p>
+
+```{code-cell} python
+df.info()
+print("Shape of data:")
+print(df.shape)
+```
+### Eksplorasi Data Analysis
+```{code-cell} python
+from google.colab import files
+uploaded = files.upload()
+
+# Membaca file setelah diunggah
+df = pd.read_excel('LAPTOP.xlsx')
+print(df.describe())
+```
+
+### Menentukan Otlier
+```{code-cell} python
+# Mengimpor pustaka
+import pandas as pd
+from sklearn.neighbors import LocalOutlierFactor
+
+# Membaca dataset (Excel atau CSV sesuai file)
+file_path = "LAPTOP.xlsx"  # Ganti sesuai format file Anda
+X = pd.read_excel(file_path)
+
+# Memilih hanya kolom numerik
+X = X.select_dtypes(include=[float, int])
+
+# Menghapus nilai kosong
+X = X.dropna()
+
+# Membuat objek LOF
+lof = LocalOutlierFactor(n_neighbors=5, contamination=0.1)
+
+# Menentukan outlier
+y_pred = lof.fit_predict(X)
+
+# Mencetak hasil
+print("Predicted table:", y_pred)
+print("Negative LOF scores:", -lof.negative_outlier_factor_)
+
+# Menentukan indeks outlier
+outlier_indices = [index for index, value in enumerate(y_pred) if value == -1]
+print("Data outlier terdapat pada indeks:", outlier_indices)
+```
+<p>KESIMPULAN: Disini asumsinya adalah 0.1(10%) dari seluruh data dianggap outlier. output -1 adalah ciri-ciri dari outlier. dan output yang menunjukkan angka-angka desimal yang lebih tinggi dari angka-angka desimal lainnya merupakan outliernya. hal ini ditunjukkan pada indeks ke [2, 24, 30, 36, 45]</p>
+
+### Prepocessing 
+<p>Preprocessing adalah tahapan dalam proses analisis data yang melibatkan persiapan dan pembersihan data mentah agar siap untuk dianalisis atau dimasukkan ke dalam model. Langkah-langkah ini penting untuk memastikan bahwa data berada dalam format yang sesuai dan bebas dari kesalahan yang bisa mempengaruhi hasil analisis.</p>
+
+### Menghapus Otlier
+
+```{code-cell} python
+# Mengimpor pustaka
+import pandas as pd
+from sklearn.neighbors import LocalOutlierFactor
+
+# Membaca dataset dari file Excel
+X = pd.read_excel("LAPTOP.xlsx")
+
+# Memilih hanya kolom numerik dan menghapus nilai kosong
+X = X.select_dtypes(include=[float, int]).dropna()
+
+# Membuat objek LocalOutlierFactor
+lof = LocalOutlierFactor(n_neighbors=5, contamination=0.1)
+
+# Menentukan status outlier
+y_pred = lof.fit_predict(X)
+
+# Menemukan indeks outlier
+outlier_indices = [index for index, value in enumerate(y_pred) if value == -1]
+print("Data outlier terdapat pada indeks:", outlier_indices)
+
+# Menghapus outlier dari dataset
+X_clean = X.drop(index=outlier_indices)
+
+# Menyimpan dataset tanpa outlier ke file baru
+X_clean.to_csv("AFF_dataset_tanpa_outlier.csv", index=False)
+
+# Menampilkan jumlah baris asli dan setelah pembersihan
+print("Jumlah baris asli:", len(X))
+print("Jumlah baris setelah outlier dihapus:", len(X_clean))
+print("Dataset tanpa outlier telah disimpan ke 'LAPTOP_tanpa_outlier.csv'")
+```
+### Pemodelan
+```{code-cell} python
+import pandas as pd
+from sklearn.model_selection import train_test_split
+
+# Membaca data dari file CSV (pastikan 'data.csv' adalah nama file yang benar)
+df = pd.read_csv('LAPTOP.csv')
+
+# Memilih kolom fitur (X) dan target (y)
+X = df[['nama', 'tahun', 'jenis', 'ram', 'rom']]  # Ganti dengan nama kolom yang sesuai
+y = df['harga']  # Ganti dengan nama kolom target yang sesuai
+
+# Membagi data menjadi data pelatihan (80%) dan data pengujian (20%)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Menampilkan jumlah data pada data pelatihan dan data pengujian
+print("Jumlah data pelatihan:", len(X_train))
+print("Jumlah data pengujian:", len(X_test))
+```
+
+```{code-cell} python
+X = df[['nama', 'tahun', 'jenis', 'ram', 'rom']]
+y = df['harga']
+
+# Split data
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+```
+
+### SVM
+
+```{code-cell} python
+from sklearn.svm import SVR
+from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
+from sklearn.model_selection import train_test_split
+from sklearn.datasets import make_regression
+import numpy as np
+
+# Generate synthetic regression data
+X, y = make_regression(n_samples=100, n_features=1, noise=0.1, random_state=42)
+
+# Normalize the target values to reduce the scale of errors
+y = y / np.max(np.abs(y))
+
+# Split the data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Initialize the SVR model with default parameters
+svr = SVR(kernel='rbf')
+
+# Fit the model on the training data
+svr.fit(X_train, y_train)
+
+# Predict on the test set
+y_pred = svr.predict(X_test)
+
+# Calculate Mean Squared Error (MSE), Mean Absolute Error (MAE), and R2 Score
+mse = mean_squared_error(y_test, y_pred)
+mae = mean_absolute_error(y_test, y_pred)
+r2 = r2_score(y_test, y_pred)
+
+print("\nEvaluasi Model SVR:")
+print(f"Mean Squared Error (MSE): {mse}")
+print(f"Mean Absolute Error (MAE): {mae}")
+print(f"R2 Score: {r2}")
+```
+
+### Random Forest
+```{code-cell} python
+from sklearn.svm import SVR
+from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import OneHotEncoder
+from sklearn.compose import ColumnTransformer
+from sklearn.pipeline import Pipeline
+
+# Mengonversi data kategorikal dengan OneHotEncoder
+# Menyusun pipeline untuk menangani preprocessing dan model dalam satu langkah
+
+# Menentukan kolom yang kategorikal
+categorical_columns = ['nama', 'jenis']
+
+# Menggunakan OneHotEncoder untuk mengonversi kolom kategorikal menjadi numerik
+preprocessor = ColumnTransformer(
+    transformers=[
+        ('cat', OneHotEncoder(handle_unknown='ignore'), categorical_columns),  # Menambahkan handle_unknown
+        ('num', StandardScaler(), ['tahun', 'ram', 'rom'])  # Menstandarisasi kolom numerik
+    ])
+
+# Membuat pipeline yang terdiri dari preprocessing dan model SVR
+model_pipeline = Pipeline(steps=[
+    ('preprocessor', preprocessor),
+    ('svr', SVR(kernel='rbf'))
+])
+
+# Melatih model menggunakan pipeline
+model_pipeline.fit(X_train, y_train)
+
+# Prediksi
+y_pred_svr = model_pipeline.predict(X_test)
+
+# Evaluasi
+print("\nEvaluasi Model SVR:")
+print(f"MAE: {mean_absolute_error(y_test, y_pred_svr):.4f}")
+print(f"MSE: {mean_squared_error(y_test, y_pred_svr):.4f}")
+print(f"R2 Score: {r2_score(y_test, y_pred_svr):.4f}")
+```

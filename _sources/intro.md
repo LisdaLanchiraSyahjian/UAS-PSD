@@ -1,11 +1,14 @@
-# Welcome to your Jupyter Book
+# Proyek Sains Data
 
-This is a small sample book to give you a feel for how book content is
-structured.
-It shows off a few of the major file types, as well as some sample content.
-It does not go in-depth into any particular topic - check out [the Jupyter Book documentation](https://jupyterbook.org) for more information.
+Nama        : Lisda Lanchira Syahjian
+NIM         : 220411100091
+Project 1   : Prediksi Harga Laptop
+Project 2   : Prediksi Harga Tepung Terigu
+Project 3   : Prediksi Kebakaran Hutan
 
-Check out the content pages bundled with this sample book to see more.
 
-```{tableofcontents}
-```
+[Project 1](https://colab.research.google.com/drive/1p-YJ1i3VGAe7TMNbg_5RjUTfRZFKteeF?usp=sharing)
+[Project 2](https://colab.research.google.com/drive/1uXiwPutzq4ETkU1g4CD9FiGFwO0cAYYl?usp=sharing)
+[Project 3](https://colab.research.google.com/drive/1vpAgdTOycmxBSCdluDo75hskAHRCw3p4?usp=sharing)
+
+Terimakasih.

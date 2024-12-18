@@ -430,128 +430,27 @@
 
 <span class="c1"># Use the raw content link for the dataset</span>
 <span class="n">data_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/LisdaLanchiraSyahjian/Proyek-Sain-Data/main/AFF</span><span class="si">%20d</span><span class="s2">ataset.csv&quot;</span><span class="p">))</span>
-<span class="n">data_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data_df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   id      Date  Temperature   RH   Ws  Rain   FFMC  DMC    DC  ISI  BUI  FWI  \
+0   1  6/1/2012           29   57   18    0.0  65.7  3.4   7.6  1.3  3.4  0.5   
+1   2  6/2/2012           29   61   13    1.3  64.4  4.1   7.6  1.0  3.9  0.4   
+2   3  6/3/2012           26   82   22   13.1  47.1  2.5   7.1  0.3  2.7  0.1   
+3   4  6/4/2012           25   89   13    2.5  28.6  1.3   6.9  0.0  1.7  0.0   
+4   5  6/5/2012           27   77   16    0.0  64.8  3.0  14.2  1.2  3.9  0.5   
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>id</th>
-      <th>Date</th>
-      <th>Temperature</th>
-      <th>RH</th>
-      <th>Ws</th>
-      <th>Rain</th>
-      <th>FFMC</th>
-      <th>DMC</th>
-      <th>DC</th>
-      <th>ISI</th>
-      <th>BUI</th>
-      <th>FWI</th>
-      <th>Classes</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>6/1/2012</td>
-      <td>29</td>
-      <td>57</td>
-      <td>18</td>
-      <td>0.0</td>
-      <td>65.7</td>
-      <td>3.4</td>
-      <td>7.6</td>
-      <td>1.3</td>
-      <td>3.4</td>
-      <td>0.5</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2</td>
-      <td>6/2/2012</td>
-      <td>29</td>
-      <td>61</td>
-      <td>13</td>
-      <td>1.3</td>
-      <td>64.4</td>
-      <td>4.1</td>
-      <td>7.6</td>
-      <td>1.0</td>
-      <td>3.9</td>
-      <td>0.4</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>3</td>
-      <td>6/3/2012</td>
-      <td>26</td>
-      <td>82</td>
-      <td>22</td>
-      <td>13.1</td>
-      <td>47.1</td>
-      <td>2.5</td>
-      <td>7.1</td>
-      <td>0.3</td>
-      <td>2.7</td>
-      <td>0.1</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>4</td>
-      <td>6/4/2012</td>
-      <td>25</td>
-      <td>89</td>
-      <td>13</td>
-      <td>2.5</td>
-      <td>28.6</td>
-      <td>1.3</td>
-      <td>6.9</td>
-      <td>0.0</td>
-      <td>1.7</td>
-      <td>0.0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>5</td>
-      <td>6/5/2012</td>
-      <td>27</td>
-      <td>77</td>
-      <td>16</td>
-      <td>0.0</td>
-      <td>64.8</td>
-      <td>3.0</td>
-      <td>14.2</td>
-      <td>1.2</td>
-      <td>3.9</td>
-      <td>0.5</td>
-      <td>0</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
+   Classes    
+0          0  
+1          0  
+2          0  
+3          0  
+4          0  
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="data-undeerstanding">

@@ -44,7 +44,7 @@ import pandas as pd
 
 # Use the raw content link for the dataset
 data_df = pd.DataFrame(pd.read_csv("https://raw.githubusercontent.com/LisdaLanchiraSyahjian/Proyek-Sain-Data/main/AFF%20dataset.csv"))
-data_df.head()
+print(data_df.head())
 ```
 
 ### Data Undeerstanding

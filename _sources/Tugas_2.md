@@ -32,6 +32,7 @@ plt.style.use("fivethirtyeight")
 ```
 
 ```{code-cell} python
+
 import pandas as pd
 
 # Ubah URL ke URL raw GitHub
@@ -48,6 +49,7 @@ df.head(32)
 ```
 
 ```{code-cell} python
+
 import pandas as pd
 
 # Menampilkan daftar nama kolom untuk memastikan nama kolom yang benar

@@ -19,7 +19,7 @@ kernelspec:
 https://www.kaggle.com/datasets/nirwana22/harga-bahan-sembako  yang selanjutnya akan saya uji sebagai Proyek Sains Data. Untuk lebih jelasnya dapat disimak langkah-langkah dalam mengerjakan proyek ini :</P>
 
 ## Data Undesstanding
-```{code-cell} python
+```python
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -29,6 +29,7 @@ import plotly.express as px
 
 color_pal = sns.color_palette()
 plt.style.use("fivethirtyeight")
+
 ```
 
 ```{code-cell} python
